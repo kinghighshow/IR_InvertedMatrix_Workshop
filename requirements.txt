@@ -1,0 +1,9 @@
+ipykernel
+nbformat>=4.2
+requests
+feedparser
+beautifulsoup4
+nltk
+pandas
+plotly
+gitpython
