@@ -1,0 +1,19 @@
+Python Language Summit 2026 blog posts are now available
+
+<p>On July 14th, 2026, 47 Python core developers and special guests sat down
+at the <a href="https://blog.python.org/2026/09/language-summit-2026">Python Language Summit</a>, this year
+held in Kraków, Poland at EuroPython 2026, to discuss many topics about the future
+of the Python programming language, including free-threading, Rust, garbage collectors,
+type annotations, and namespacing.</p><div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh9b7Xn98N0VpTwRN2Pu2Jk0q7sfPY_jBway6IkdspPV4vtGpWu4xp8H7Ef2L2K73jc0IC03AYWSP1sJAuKqdOBpKREuvNiYCG0oIM8MZLMeP1p0wLlHUYU1XpnApUMKy26u12RdSIa84wjTThbxk-6hxHA3y1gjy7pfHW6YZd_BfNBgytl_w/s1600/_image.png" style="display: block; padding: 1em 0px; text-align: center;"><img alt="Group photo of the attendees of the 2026 Python Language Summit Photo by EuroPython (CC BY-NC-SA 4.0)" border="0" height="266" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh9b7Xn98N0VpTwRN2Pu2Jk0q7sfPY_jBway6IkdspPV4vtGpWu4xp8H7Ef2L2K73jc0IC03AYWSP1sJAuKqdOBpKREuvNiYCG0oIM8MZLMeP1p0wLlHUYU1XpnApUMKy26u12RdSIa84wjTThbxk-6hxHA3y1gjy7pfHW6YZd_BfNBgytl_w/w400-h266/_image.png" title="Photo by EuroPython (CC BY-NC-SA 4.0)" width="400" /></a><p>This marked the first time the Python Language
+Summit had been hosted in Europe in 15 years, when the event was
+<a href="https://lwn.net/Articles/449710/">held in Florence on June 19th, 2011</a>.
+Going forward, the Python Language Summit will alternate between
+PyCon US and EuroPython on a yearly basis.</p>
+<p>The summit was organized by Emily Morehouse, Hugo van Kemenade, Lysandros Nikolaou,
+and Łukasz Langa, and blog posts were written by Seth Larson.</p>
+<p>Below are summaries of the 10 full-length
+talks and 5 lightning talks that were presented at the 2026 Python Language Summit.
+I hope you enjoy them, and thank you for your patience.</p>
+<ul><li>“<a href="https://blog.python.org/2026/09/language-summit-2026-namespaces">One namespace to namespace them all</a>” by Pablo Galindo Salgado</li><li>“<a href="https://blog.python.org/2026/09/language-summit-2026-macos-python">macOS and Python</a>” by Ned Deily</li><li>“<a href="https://blog.python.org/2026/09/language-summit-2026-garbage-collection-generational-incremental-both">Garbage Collection: Generational? Incremental? Both!</a>” by Mark Shannon</li><li>“<a href="https://blog.python.org/2026/09/language-summit-2026-memory-buffer-protocol">Memory Buffer Protocol</a>” by Nathan Goldbaum</li><li>“<a href="https://blog.python.org/2026/09/language-summit-2026-memory-snapshots">Memory Snapshots for CPython</a>” by Hood Chatham</li><li>“<a href="https://blog.python.org/2026/09/language-summit-2026-rust-for-cpython">Rust for CPython</a>” by David Hewitt</li><li>“<a href="https://blog.python.org/2026/09/language-summit-2026-spicycrab">Spicycrab</a>” by Kushal Das</li><li>“<a href="https://blog.python.org/2026/09/language-summit-2026-developer-in-residence-update-and-future">Developer-in-Residence Update &amp; Future</a>” by Petr Viktorin</li><li>“<a href="https://blog.python.org/2026/09/language-summit-2026-free-threading-post-era">Free-Threaded Python Post-Era</a>” by Donghee Na, Tobias Wrigstad, and Fridtjof Stoldt</li><li>“<a href="https://blog.python.org/2026/09/language-summit-2026-pep-827-type-manipulation">PEP 827: Type Manipulation</a>” by Michael J. Sullivan</li><li>“<a href="https://blog.python.org/2026/09/language-summit-2026-lightning-talks">Lightning Talks</a>”
+<ul><li>“One-time ABI breakage” by Mark Shannon</li><li>“Safer and Generic Interruptions” by Daniele Parmeggiani</li><li>“EktuPy, Scratch but Python” by Kushal Das</li><li>“<code>AGENTS.md</code> for CPython” by Gregory P. Smith and Łukasz Langa</li><li>“Please read PEP 836 (JIT go brrr)” by Ken Jin</li></ul>
+</li></ul></div>

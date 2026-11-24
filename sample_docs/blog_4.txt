@@ -1,0 +1,41 @@
+How the Python ecosystem responded to the eMudhra intermediate compromise
+
+<p>
+The news of the <a href="https://emudhra.we-have-a-problem.com/">eMudhra Intermediate CA compromise</a> was published on October 20th, 2026. Responding to an incident like a Certificate Authority (CA) compromise at an ecosystem-scale is far from “routine”; the assumption that HTTPS is secure is baked into many aspects of Python applications and packaging. This meant it was critical to mount a response that was both comprehensive and customized to each affected project and service, ranging from the Python language, pip, and the Python Package Index (PyPI).
+</p>
+<p>
+This is where security staffing at the Python Software Foundation made a difference for Python. Staffing meant that Seth Larson, the Security Developer-in-Residence, was on standby able to respond and begin work on the issue immediately. Pre-existing relationships with affected project maintainers afforded plenty of trust, and the work was completed in a way that respected the time of volunteer maintainers for affected packages by reaching out proactively with clear next steps. Thanks to Alpha-Omega for funding the Security Developer-in-Residence position at the Python Software Foundation.
+</p>
+<p>
+The incident was mitigated across multiple components within two days. Thanks to the work of their respective maintainers: fixes were made available for certifi, Python, pip, uv, sigstore, virtualenv, conda, pixi, manylinux, gh-action-pypi-publish, and many other projects. Vulnerable versions of certifi, pip, and sigstore were patched across all projects and services that the Python Software Foundation stewards, including <a href="https://pypi.org/">PyPI</a>, <a href="https://github.com/python/release-tools">Python’s release process</a> and <a href="https://github.com/python/buildmaster-config/">build bots</a>, and <a href="http://python.org">python.org</a>. Containers have been rebuilt with the correct set of certificates.
+</p>
+<p>
+Advisories, CVE records, banners, and discussion threads were created to alert the community about the work necessary to mitigate this incident and to be a location where relevant discussions and questions were answered by experts. Subscribe to the <a href="https://mail.python.org/archives/list/security-announce@python.org/">security-announce mailing list</a> for future advisories about Python, pip, and other exceptional circumstances like this incident. Information about which projects are affected is <a href="https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576">available on discuss.python.org</a> and <a href="https://emudhra.we-have-a-problem.com/#developers">around the web for more projects</a>.
+</p>
+<h2>How did this incident affect Python as an ecosystem?</h2>
+
+
+<p>
+This section details the current situation of multiple Python projects. An aspect of positive security culture is “blameless post-portems”, we can only improve the future and the best way to do this is to show up and support the projects and maintainers that you depend on. Please note that all decisions below have historical context and sound reasons for being: <strong>Python is about the same age as TLS </strong>and is much older than the expectation that your system has up-to-date and secure CA certificate bundles.
+</p>
+<p>
+The key component requiring a prompt response to the incident from the Python ecosystem is “<a href="https://pypi.org/project/certifi">certifi</a>” and the advisory <a href="https://github.com/certifi/python-certifi/security/advisories/GHSA-6q48-6c7w-9gw2">GHSA-6q48-6c7w-9gw2</a>. Certifi is a repackaging of Mozilla’s CA bundle as a Python package and used by many popular projects including pip and requests. The package only includes root CAs, not intermediates, and therefore needed to remove the root CA from the CA bundle (“emSign Root TLS CA - G3”) to distrust all the impacted intermediate certificates.
+</p>
+<p>
+Keeping a long story short: certifi is a critical dependency for being able to bootstrap a Python virtual environment into being able to install packages from PyPI. pip bundles its dependencies which includes “Requests” which depends on certifi. Python bundles pip so new virtual environments always contain pip through a mechanism called “ensurepip”.
+</p>
+<p>
+This arrangement put all three of these components, Python, pip, and certifi, in the critical path for permanently remediating this incident as a user through software updates. There also isn’t an easy answer for older versions of Python which would permanently contain an older version of pip due to compatibility concerns. To address this concern, Python has <a href="https://github.com/python/cpython/pull/160042">added a “last-resort” denylist</a> to reject the compromised intermediate certificates during a TLS handshake, fixed versions and more information tracked via <a href="https://www.cve.org/CVERecord?id=CVE-2026-115557">CVE-2026-115557</a> which has been backported to older versions of Python.
+</p>
+<h2>What happens next?</h2>
+
+
+<p>
+We’re continuing our efforts to alert users through advisories and CVE and <a href="https://discuss.python.org/t/information-for-python-users-regarding-emudhra-emsign-ca-certificate-security-incident/109576">using banners on the PyPI and discuss.python.org</a> and will be closely monitoring the <a href="https://pepy.tech/projects/certifi?timeRange=threeMonths&amp;category=version&amp;includeCIDownloads=true&amp;granularity=daily&amp;viewType=line&amp;versions=Total%2C2026.7.22%2C2026.10.*">uptake of patched versions of “certifi”</a> across the ecosystem. The immediate, synchronous response has concluded, now we turn to what should be prioritized so a future incident like a CA compromise might not require as urgent a response from volunteer maintainers.
+</p>
+<p>
+Right from the beginning of the incident it was identified that TLS handshakes made by browsers were secure, but tools like pip, git, uv weren’t secure. Why is this? Browsers were able to secure their certificate stores quickly and without requiring a software update by using Certificate Revocation Lists (CRL). CRLs allow providers of CAs to provide information to verifiers outside of the software update process, such as when certain certificates should no longer be used due to revocation or compromise. 
+</p>
+<p>
+These technologies may be integrated into Python in the future to provide a quicker and robust response to future incidents involving CA certificates and allow distributions to configure these facilities system-wide. One potential project to watch is <a href="https://github.com/rustls/upki">upki</a>, which has already been adopted by Ubuntu, provides certificate revocation functionality similar to that of browsers on platforms which previously did not offer such facilities. 
+</p>

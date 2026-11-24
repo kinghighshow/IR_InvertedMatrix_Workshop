@@ -1,0 +1,31 @@
+Wikis: Relaunched!
+
+<p>In February 2026, the Python Software Foundation (PSF) made the PSF, Python, and Jython wikis read-only due to excessive automated traffic and security concerns on outdated infrastructure. This sudden change was disruptive to the many community members who rely on and contribute to these wikis. We are pleased to share that we have stood up new wikis through GitHub Pages that address the automated traffic and security concerns. The new wikis will have a more modern front-end, as well as a permissions-based content management system (CMS) for community members to make updates.</p>
+
+<p>Find the new wikis here:</p>
+<ul>
+  <li><a href="https://psf.github.io/wiki/psf/index.html">PSF Wiki</a></li>
+  <li><a href="https://psf.github.io/wiki/index.html">Python Wiki</a></li>
+  <li><a href="https://psf.github.io/wiki/jython/index.html">Jython Wiki</a></li>
+</ul>
+
+<h2>More details and context</h2>
+
+<h3>Excessive automated traffic</h3>
+<p>With the old wiki structure, we received a large volume of alerts at all hours, each serious enough to page and wake our on-call infrastructure staff, which is very limited (just one person currently, although this will be changing soon!). The quantity of scraping overloaded our servers, causing outages, which happened often enough that these issues required a significant amount of effort for the PSF staff to manage. On review back in February, that traffic turned out to be almost entirely AI bots that were trying to scrape the entire internet.</p>
+
+<h3>Security</h3>
+<p>Additionally, some portions of the wikis were still built with Python 2. Python 2 reached end of life on January 1, 2020, and no longer receives upstream security fixes. Moving to a static site makes it very fast and reduces security risks, while also having the benefit of a more modern user interface.</p>
+
+<h3>Impact</h3>
+<p>The PSF acknowledges that retiring the old wikis without notice was frustrating to the overall community and especially so to those community members who have spent a lot of time contributing to the wikis over the years. The abrupt nature of this change did not reflect the care and respect that our contributors deserve, and we recognize the frustration this caused. We built the new wikis with the guiding principle of how to best serve the community, and we hope they will continue to be a valuable community resource, and hopefully improve on the experience. The new CMS means you can even create pull requests in your code editor if you prefer!</p>
+
+<h3>Platform</h3>
+<p>GitHub was chosen for the home of the new wikis as this is where CPython, <a href="https://www.python.org">python.org</a>, and other properties the PSF hosts currently live. The hope is to continue to streamline the PSF's hosting and stewardship of services to simplify for both PSF staff and the community folks who contribute to them.</p>
+
+<h2>How to Contribute</h2>
+<p>Previously, the Python and Jython wikis were user-editable by invitation of an existing editor and the PSF wiki was permissions based. Moving forward, all three of the wikis will be permissions based via <a href="https://github.com/psf/wiki">the GitHub repository they are hosted on</a>, and changes can be requested through pull requests by anyone in the community.</p>
+
+<p>We realize that moving to GitHub, with an entirely permissions based process, is a big change from the previous form. As stewards of Python's web presence, we've opted to provide a more modern interface, relying on GitHub, the platform that already powers CPython development. GitHub allows us to distribute granular control, review changes through pull requests, and maintain the uptime this service deserves. Also, since the site is now generated statically, it removes any worry about AI bots overwhelming the hosts that the wikis were previously hosted on.</p>
+
+<p>Please review the <a href="https://github.com/psf/wiki/blob/main/README.md">repository's README file</a> to learn more about contributing. We welcome the community to come join in on updating, cleaning up, and adding pages to the new wiki! We will happily grant write access to the Python wiki to contributors who are known stewards of the previous wiki, and look forward to bringing on more contributors in the future.</p>
