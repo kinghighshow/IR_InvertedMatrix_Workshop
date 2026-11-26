@@ -1,32 +1,45 @@
 # IR-invertedmatrix-workshop
 
-PROG8245 – Inverted Matrix Workshop, Team #___
+PROG8245 – Inverted Matrix Workshop, Team 1
 
 ## Team members
-- Sultan Akinola Atanda
-- ________
-- ________
 
-## What's inside
-`IR_InvertedMatrix_Workshop.ipynb` builds an information-retrieval pipeline end to end:
+| Name | Student ID | Part of the notebook |
+|---|---|---|
+| Sultan Akinola Atanda | 9114837 | Biword and positional indexes, phrase queries, merging and submission |
+| John Buni | 9115726 | Document collection and tokenizer |
+| Echezona (Eche) Oji | 9078881 | Normalization pipeline and Boolean retrieval (AND, AND NOT) |
+| Antonio Sainz | 9072844 | TF-IDF ranking, RAG and AI agents |
 
-1. **Document collection**: 20 posts from an RSS feed, HTML stripped, files loaded in a fixed order, vocabulary checked against the 2000-word target
-2. **Tokenizer**: keeps contractions and version numbers (`3.13`) as single tokens
-3. **Normalization**: NLTK stop words + Porter stemming, with positions taken from the original token stream
-4. **Inverted & positional index**: Boolean AND, exact phrase queries checked against a regex ground truth, and TF-IDF ranking
+## What's in the notebook
 
-Our own work is marked **🧩 Team Talking Point** in the notebook (7 talking points plus 2 phrase query tests).
+`IR_InvertedMatrix_Workshop.ipynb` keeps all of the professor's cells and adds our own cells (marked 🧩 with the author's name) after each step:
+
+1. **Document collection:** 20 PSF blog posts, HTML stripped, loaded in a fixed order, vocabulary checked (2,473 unique tokens)
+2. **Tokenizer:** keeps contractions and version numbers like `3.13.1` as single tokens, tested against the original
+3. **Normalization:** lowercasing, NLTK stop words and Porter stemming, shown step by step on one sentence
+4. **Inverted index and Boolean search:** posting lists, AND and AND NOT using sorted merges, checked against a full scan
+5. **Biword and positional indexes:** two phrase queries (`board of directors`, `board election candidate`) checked against the raw text
+6. **TF-IDF, RAG and agents:** ranked search, a `retrieve()` function, a RAG prompt and a simulated agent tool call
+
+There are 6 talking points in total, one or two per section.
 
 ## Dataset
-- **Source:** Python Software Foundation News blog, RSS feed `https://pyfound.blogspot.com/feeds/posts/default?alt=rss`
-- **Size:** 20 posts (titles + post bodies), saved as `sample_docs/blog_N.txt`
-- **License:** blog content © Python Software Foundation, used here for non-commercial educational purposes only. The text is fetched at run time and is not redistributed in this repo.
 
-## Run it
+- **Source:** Python Software Foundation News blog: https://pyfound.blogspot.com
+- **Feed used:** https://pyfound.blogspot.com/feeds/posts/default?alt=rss
+- **Size:** the 20 most recent posts at the time we collected them (November 2026), saved as `sample_docs/blog_1.txt` to `blog_20.txt`, each with the post title and body
+- **Content:** PSF news such as board elections, grants, security staffing, the strategic plan and community awards
+- **License:** the posts belong to the Python Software Foundation. We use them only for this non-commercial class exercise and credit the PSF as the source.
+
+The download cell refreshes `sample_docs` from the live feed. The feed changes over time, so a later run may pick up newer posts and give slightly different results from the saved outputs.
+
+## How to run
+
 ```bash
 python -m venv .venv
-# Windows: .venv\Scripts\activate   |   macOS/Linux: source .venv/bin/activate
+# Windows: .venv\Scripts\activate    macOS/Linux: source .venv/bin/activate
 pip install -r requirements.txt
-python -m nltk.downloader stopwords
 ```
-Open the notebook in VS Code, select the `.venv` kernel, and click **Run All**.
+
+Open the notebook in VS Code, select the `.venv` kernel and use **Run All**. The NLTK stop words download inside the notebook.
